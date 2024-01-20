@@ -641,7 +641,7 @@ const Header: React.FC = () => {
 
                   <div className="my-4 font-bold">
                     <div className="flex text-2xl justify-between items-center">
-                      <span>Subtotal</span> <span>${total.toFixed(2)}</span>
+                      <span>Total</span> <span>${total.toFixed(2)}</span>
                     </div>
                   </div>
                 </>
