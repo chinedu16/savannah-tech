@@ -28,10 +28,10 @@ const Post: React.FC = () => {
                 <span>New</span>
               </div>
               <h3 className="text-main-text mb-3 text-2xl font-normal">
-                Loudest à la Madison #1 (L'integral)
+                Loudest la Madison #1 (L integral)
               </h3>
               <p className="text-text-color text-sm">
-                We focus on ergonomics and meeting you where you work. It's only
+                We focus on ergonomics and meeting you where you work. Its only
                 a keystroke away.
               </p>
               <div className="my-6 flex justify-between">
@@ -125,10 +125,10 @@ const Post: React.FC = () => {
                 <span>New</span>
               </div>
               <h3 className="text-main-text mb-3 text-2xl font-normal">
-                Loudest à la Madison #1 (L'integral)
+                Loudest la Madison #1 (L integral)
               </h3>
               <p className="text-text-color text-sm">
-                We focus on ergonomics and meeting you where you work. It's only
+                We focus on ergonomics and meeting you where you work. Its only
                 a keystroke away.
               </p>
               <div className="my-6 flex justify-between">
@@ -222,10 +222,10 @@ const Post: React.FC = () => {
                 <span>New</span>
               </div>
               <h3 className="text-main-text mb-3 text-2xl font-normal">
-                Loudest à la Madison #1 (L'integral)
+                Loudest a la Madison #1 (L integral)
               </h3>
               <p className="text-text-color text-sm">
-                We focus on ergonomics and meeting you where you work. It's only
+                We focus on ergonomics and meeting you where you work. Its only
                 a keystroke away.
               </p>
               <div className="my-6 flex justify-between">

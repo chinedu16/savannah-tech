@@ -15,23 +15,18 @@ import Image from "next/image";
 
 import { useRouter } from "next/router";
 import { addToWishlist, addToCart } from "../../features/productSlice";
+import { StaticImport } from "next/dist/shared/lib/get-img-props";
 
-interface Product {
-  id: number;
-  name: string;
-  title: string;
-  price: number;
-}
 
 const ProductDetails: React.FC = () => {
   const dispatch = useDispatch();
   const router = useRouter();
   const { productId } = router.query;
-  const [data, setData] = useState<Product[]>([]);
+  const [data, setData] = useState<any>([]);
   const [wishlistOpen, setWishlistOpen] = useState(false);
 
-  const [vertical, setVertical] = useState("bottom");
-  const [horizontal, setHorizontal] = useState("right");
+  const [vertical, setVertical] = useState<"bottom" | "top">("bottom");
+  const [horizontal, setHorizontal] = useState<"left" | "center" | "right">("right");
 
   const [cartOpen, setCartOpen] = useState(false);
   useEffect(() => {
@@ -135,7 +130,7 @@ const ProductDetails: React.FC = () => {
                 />
               </div>
               <div className="grid grid-cols-4 md:grid-cols-8 gap-4 mt-5">
-                {data.images?.map((product, index) => (
+                {data.images?.map((product: string | StaticImport, index: React.Key | null | undefined) => (
                   <Image
                     key={index}
                     src={product}

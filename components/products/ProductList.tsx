@@ -10,14 +10,15 @@ import { Montserrat } from "next/font/google";
 const montserrat = Montserrat({ subsets: ["latin"] });
 
 const ProductList: React.FC = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<any>()
   const router = useRouter();
-  const { products = [], skip, total } = useSelector((state) => state.products);
+  const { products = [], skip, total } = useSelector((state: any) => state.products);
+
 
   useEffect(() => {
     // Fetch initial set of products
     dispatch(fetchProducts());
-  }, []);
+  }, [dispatch]);
 
   const handleLoadMore = () => {
     const currentSkip = skip;

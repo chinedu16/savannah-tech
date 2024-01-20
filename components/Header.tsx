@@ -82,14 +82,6 @@ const Header: React.FC = () => {
     handleOpen();
   };
 
-  const style = {
-    position: "absolute" as "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    boxShadow: 24,
-  };
-
   const isInStock = (product: number) => {
     if (product > 1) {
       return true;
@@ -518,7 +510,13 @@ const Header: React.FC = () => {
           <>
             <div
               className="bg-white absolute w-10/12 md:w-2/5 p-6"
-              style={style}
+              style={{
+                position: "absolute",
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
+                boxShadow: '24',
+              }}
             >
               <div className="flex justify-between items-center pb-4 border-b border-gray-400">
                 <h4 className="text-2xl text-title font-bold">Shopping Cart</h4>
@@ -654,7 +652,13 @@ const Header: React.FC = () => {
           <>
             <div
               className="bg-white absolute w-10/12 md:w-2/5 p-6"
-              style={style}
+              style={{
+                position: "absolute",
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
+                boxShadow: '24',
+              }}
             >
               <div className="flex justify-between items-center pb-4 border-b border-gray-400">
                 <h4 className="text-2xl text-title font-bold">

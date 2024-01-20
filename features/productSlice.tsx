@@ -6,6 +6,11 @@ interface Product {
   // your product type
   id: any;
   count: number;
+  price:  number;
+  thumbnail: string;
+  title: string;
+  stock: number
+
 }
 
 interface ProductState {
