@@ -143,8 +143,8 @@ const ProductDetails: React.FC = () => {
                 {/* <Image src={post1} alt="Vercel Logo" className="w-full" /> */}
               </div>
             </div>
-            <div className="md:w-5/12">
-              <h3 className="text-xl">{data.title}</h3>
+            <div className="md:w-5/12 mt-5 md:mt-0">
+              <h3 className="text-xl font-semibold text-text-color">{data.title}</h3>
               <div className="mt-3 flex space-x-1 mb-5">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

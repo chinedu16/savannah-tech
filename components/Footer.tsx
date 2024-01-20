@@ -65,8 +65,8 @@ const Footer: React.FC = () => {
       <div>
         <div className="container mx-auto px-10 lg:px-20">
           <div className="flex justify-between py-14">
-            <div className="md:flex w-full justify-between">
-              <div className="md:flex space-y-10 md:space-y-0 w-full md:w-7/12 justify-between">
+            <div className="lg:flex w-full justify-between">
+              <div className="lg:flex md:grid grid-cols-3 gap-8 space-y-10 md:space-y-0 w-full md:5/12 lg:w-7/12 justify-between">
                 <div>
                   <h4 className="text-title font-bold mb-5">Company Info</h4>
                   <ul className="space-y-3 text-sm font-bold text-text-color">
@@ -104,7 +104,7 @@ const Footer: React.FC = () => {
                   </ul>
                 </div>
               </div>
-              <div className="w-full mt-10 md:mt-0 md:w-4/12">
+              <div className="w-full mt-10 lg:mt-0 md:w-6/12 lg:w-4/12">
                 <h4 className="text-title font-bold mb-5">Get In Touch</h4>
                 <div style={{ display: "flex" }}>
                   <TextField
@@ -127,7 +127,7 @@ const Footer: React.FC = () => {
                   </Button>
                 </div>
 
-                <p>Lore imp sum dolor Amit</p>
+                <p className="text-xs text-text-color">Lore imp sum dolor Amit</p>
               </div>
             </div>
           </div>

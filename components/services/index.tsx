@@ -14,7 +14,7 @@ const Service: React.FC = () => {
         </div>
       </div>
       <div className="w-full flex flex-col md:flex-row justify-center">
-        <div className="w-full md:w-4/5 mt-10 md:mt-20 flex flex-col md:flex-row justify-between items-center">
+        <div className="w-full lg:w-4/5 mt-10 md:mt-20 flex flex-col md:flex-row justify-between items-center">
           <div className="flex flex-col justify-center items-center mb-6 md:mb-0">
             <svg
               className="mb-5"

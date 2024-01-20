@@ -92,7 +92,7 @@ const Header: React.FC = () => {
 
   return (
     <header className="">
-      <div className="bg-success-secondary h-14 hidden md:flex items-center">
+      <div className="bg-success-secondary h-14 hidden lg:flex items-center">
         <div className="container mx-auto px-10 lg:px-20">
           <div className="flex items-center justify-between">
             <div className="flex items-center">
@@ -242,7 +242,7 @@ const Header: React.FC = () => {
           </div>
         </div>
       </div>
-      <div className="h-20 hidden md:flex items-center">
+      <div className="h-20 hidden lg:flex items-center">
         <div className="container mx-auto px-10 lg:px-20">
           <div className="flex items-center justify-between">
             <div className="flex items-center">
@@ -393,34 +393,30 @@ const Header: React.FC = () => {
           </div>
         </div>
       </div>
-      <div className="h-20 md:hidden flex items-center">
+      <div className="h-20 lg:hidden flex items-center">
         <div className="container mx-auto px-10 lg:px-20">
           <div className="flex items-center justify-between">
             <div className="flex items-center">
-              <div className="text-3xl text-title font-bold">Bandage</div>
+              <div className="text-3xl text-title font-bold"> <Link href="/">Bandage</Link></div>
             </div>
             <div className="flex space-x-7 font-bold text-primary">
-              <div className="flex items-center">
+              <div onClick={(e) => checkProduct("wishlist")} className="flex items-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
+                  height="14"
+                  className="w-full h-6"
+                  viewBox="0 0 24 14"
                   fill="none"
                 >
-                  <g clip-path="url(#clip0_540_406)">
+                  <g clip-path="url(#clip0_541_566)">
                     <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M17.1901 15.4783L23.6458 21.934C23.8727 22.161 24.0001 22.4689 24 22.7899C23.9999 23.111 23.8723 23.4188 23.6452 23.6457C23.4181 23.8726 23.1102 24 22.7892 23.9999C22.4682 23.9998 22.1604 23.8722 21.9335 23.6451L15.4778 17.1894C13.5479 18.6841 11.1211 19.3875 8.69104 19.1565C6.26097 18.9255 4.01018 17.7774 2.39656 15.9458C0.782936 14.1142 -0.0723147 11.7366 0.00479537 9.29681C0.0819054 6.857 1.08558 4.5382 2.81165 2.81214C4.53771 1.08607 6.85651 0.0823937 9.29632 0.00528365C11.7361 -0.0718264 14.1137 0.783424 15.9453 2.39705C17.7769 4.01067 18.925 6.26146 19.156 8.69153C19.387 11.1216 18.6836 13.5484 17.1889 15.4783H17.1901ZM9.60045 16.7994C11.5099 16.7994 13.3412 16.0409 14.6914 14.6907C16.0416 13.3405 16.8001 11.5092 16.8001 9.59974C16.8001 7.69027 16.0416 5.859 14.6914 4.5088C13.3412 3.1586 11.5099 2.40007 9.60045 2.40007C7.69098 2.40007 5.85971 3.1586 4.50951 4.5088C3.15932 5.859 2.40078 7.69027 2.40078 9.59974C2.40078 11.5092 3.15932 13.3405 4.50951 14.6907C5.85971 16.0409 7.69098 16.7994 9.60045 16.7994Z"
+                      d="M8.50038 2.74805L7.78338 2.01105C6.10038 0.281049 3.01438 0.878049 1.90038 3.05305C1.37738 4.07605 1.25938 5.55305 2.21438 7.43805C3.13438 9.25305 5.04838 11.427 8.50038 13.795C11.9524 11.427 13.8654 9.25305 14.7864 7.43805C15.7414 5.55205 15.6244 4.07605 15.1004 3.05305C13.9864 0.878049 10.9004 0.280049 9.21738 2.01005L8.50038 2.74805ZM8.50038 15C-6.83262 4.86805 3.77938 -3.03995 8.32438 1.14305C8.38438 1.19805 8.44338 1.25505 8.50038 1.31405C8.5568 1.2551 8.61552 1.19839 8.67638 1.14405C13.2204 -3.04195 23.8334 4.86705 8.50038 15Z"
                       fill="#252B42"
+                      strokeWidth={3}
                     />
                   </g>
-                  <defs>
-                    <clipPath id="clip0_540_406">
-                      <rect width="24" height="23.9997" fill="white" />
-                    </clipPath>
-                  </defs>
+                  
                 </svg>
               </div>
               <div
@@ -509,13 +505,13 @@ const Header: React.FC = () => {
         {selectAction === "cart" ? (
           <>
             <div
-              className="bg-white absolute w-10/12 md:w-2/5 p-6"
+              className="bg-white absolute w-11/12 lg:w-2/5 p-6 overflow-scroll h-"
               style={{
-                position: "absolute",
                 top: "50%",
                 left: "50%",
+                height: '609px',
                 transform: "translate(-50%, -50%)",
-                boxShadow: '24',
+                boxShadow: "24",
               }}
             >
               <div className="flex justify-between items-center pb-4 border-b border-gray-400">
@@ -557,13 +553,13 @@ const Header: React.FC = () => {
                         />
                       </div>
                       <div className="md:w-8/12">
-                        <div className="flex justify-between items-center font-semibold text-2xl text-title">
+                        <div className="flex justify-between items-center font-semibold text-lg mt-3 lg:mt-0 lg:text-2xl text-title">
                           <h2>{item.title}</h2>
                           <h2>${item.price}</h2>
                         </div>
                         <div className="mt-1">
                           <p
-                            className={`tag ${
+                            className={`tag text-sm lg:text-lg ${
                               isInStock(item.stock)
                                 ? "text-green-500 bg-green-100 rounded-lg py-1 px-2 font-semibold w-fit"
                                 : "text-red-500 bg-red-100 rounded-lg py-1 px-2 font-semibold w-fit"
@@ -595,11 +591,11 @@ const Header: React.FC = () => {
                               </svg>{" "}
                               Remove
                             </div>
-                            <div className="border rounded border-gray-500">
+                            <div className="border flex rounded border-gray-500">
                               <Button
                                 variant="contained"
                                 color="primary"
-                                className="bg-white h-14 hover:bg-primary hover:text-white text-xl border-none shadow-none rounded-none text-title w-3"
+                                className="bg-white flex items-center justify-center hover:bg-primary hover:text-white text-xl border-none shadow-none rounded-none text-title w-3"
                                 onClick={() => handleDecrement(item.id)}
                               >
                                 -
@@ -609,14 +605,14 @@ const Header: React.FC = () => {
                                 variant="outlined"
                                 disabled={true}
                                 value={item.count}
-                                className="rounded-none border-none h-14 text-title"
+                                className="rounded-none border-none text-title"
                                 inputProps={{ min: 1 }}
                                 style={{ width: "60px" }}
                               />
                               <Button
                                 variant="contained"
                                 color="primary"
-                                className="bg-white h-14 hover:bg-primary hover:text-white text-xl border-none shadow-none rounded-none text-title w-3"
+                                className="bg-white flex items-center hover:bg-primary hover:text-white text-xl border-none shadow-none rounded-none text-title w-3"
                                 onClick={() => handleIncrement(item.id)}
                               >
                                 +
@@ -651,13 +647,13 @@ const Header: React.FC = () => {
         ) : (
           <>
             <div
-              className="bg-white absolute w-10/12 md:w-2/5 p-6"
+              className="bg-white absolute w-11/12 lg:w-2/5 p-6 overflow-scroll"
               style={{
-                position: "absolute",
                 top: "50%",
                 left: "50%",
+                height: '609px',
                 transform: "translate(-50%, -50%)",
-                boxShadow: '24',
+                boxShadow: "24",
               }}
             >
               <div className="flex justify-between items-center pb-4 border-b border-gray-400">
@@ -701,13 +697,13 @@ const Header: React.FC = () => {
                         />
                       </div>
                       <div className="w-8/12">
-                        <div className="flex justify-between items-center font-semibold text-2xl text-title">
+                        <div className="flex justify-between items-center font-semibold text-sm md:text-2xl text-title">
                           <h2>{item.title}</h2>
                           <h2>${item.price}</h2>
                         </div>
                         <div className="mt-1">
                           <p
-                            className={`tag ${
+                            className={`tag text-sm md:text-xl ${
                               isInStock(item.stock)
                                 ? "text-green-500 bg-green-100 rounded-lg py-1 px-2 font-semibold w-fit"
                                 : "text-red-500 bg-red-100 rounded-lg py-1 px-2 font-semibold w-fit"
@@ -720,7 +716,7 @@ const Header: React.FC = () => {
                           <div className="mt-3 flex items-center justify-between">
                             <div
                               onClick={() => handleDeleteWishlist(item.id)}
-                              className="text-red-500 flex items-center cursor-pointer"
+                              className="text-red-500 text-sm flex items-center cursor-pointer"
                             >
                               <svg
                                 className="mr-1"
