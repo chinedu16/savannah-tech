@@ -51,6 +51,9 @@ const Header: React.FC = () => {
           <li>
             <Link href="/settings">Settings</Link>
           </li>
+          <li>
+            <Link href="/">Logout</Link>
+          </li>
          
         </ul>
       </nav>

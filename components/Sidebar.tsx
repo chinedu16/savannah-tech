@@ -10,6 +10,7 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import SettingsIcon from "@mui/icons-material/Settings";
 import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
+import LogoutIcon from '@mui/icons-material/Logout';
 import GroupIcon from "@mui/icons-material/Group";
 
 import { useSelector } from "react-redux";
@@ -21,6 +22,10 @@ const Sidebar: React.FC = () => {
   const isActive = (pathname: string) => {
     return router.pathname.includes(pathname);
   };
+
+  const logoutApp = () =>{
+    router.push('/')
+  }
   const linkItems = [
     { path: "/dashboard", text: "Dashboard", icon: <DashboardIcon /> },
     {
@@ -35,14 +40,18 @@ const Sidebar: React.FC = () => {
     },
     { path: "/user", text: "User", icon: <GroupIcon /> }, // Added user link
     { path: "/settings", text: "Settings", icon: <SettingsIcon /> },
+    { path: "/settings", text: "Settings", icon: <SettingsIcon /> },
   ];
 
-  const filteredLinks = user?.role === "admin" ? linkItems.filter((item) => item.path === "/user") : linkItems.filter((item) => item.path !== "/user");
+  const filteredLinks =
+    user?.role === "admin"
+      ? linkItems.filter((item) => item.path === "/user")
+      : linkItems.filter((item) => item.path !== "/user");
   return (
-    <aside className="w-60 bg-gray-100 text-white hidden lg:block">
+    <aside className="relative w-60 bg-gray-100 text-white hidden lg:block">
       {/* Logo */}
       <div className="flex p-4">
-        <Link href={user?.role === 'admin' ? '/user': '/dashboard'}>
+        <Link href={user?.role === "admin" ? "/user" : "/dashboard"}>
           <Image
             src={Logo}
             alt="Logo"
@@ -51,7 +60,6 @@ const Sidebar: React.FC = () => {
             className="h-20 w-40 object-contain"
           />
         </Link>
-        
       </div>
 
       {/* Navigation Links */}
@@ -59,7 +67,7 @@ const Sidebar: React.FC = () => {
         {filteredLinks.map(({ path, text, icon }, index) => (
           <Link key={index} href={path} passHref>
             <div
-              className={`flex items-center text-gray-500 py-4 px-4 rounded-md mb-2 cursor-pointer ${
+              className={`flex items-center text-gray-500 py-3 px-4 rounded-md mb-2 cursor-pointer ${
                 isActive(path) && "bg-white font-semibold text-yellow-500"
               }`}
             >
@@ -69,6 +77,15 @@ const Sidebar: React.FC = () => {
           </Link>
         ))}
       </nav>
+
+      <div
+        onClick={logoutApp}
+        className={`flex  p-4 mt-10 absolute bottom-4 items-center text-gray-500 py-3 px-4 rounded-md mb-2 cursor-pointer`}
+      >
+        <LogoutIcon className="mr-1" />
+        Logout
+      </div>
+      
     </aside>
   );
 };
