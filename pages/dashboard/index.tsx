@@ -32,6 +32,7 @@ const Dashboard = () => {
               variant="contained"
               size="small"
               onClick={handleLogin}
+              style={{background: '#ffc107'}}
               startIcon={<AddIcon />}
             >
               Send Money

@@ -103,6 +103,7 @@ const Accounts = () => {
               variant="contained"
               size="large"
               onClick={handleLogin}
+              style={{background: '#ffc107'}}
               startIcon={<AddIcon />}
             >
               Send Money

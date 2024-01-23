@@ -95,6 +95,7 @@ const LoginBox: React.FC = () => {
             onClick={handleLogin}
             className={`w-full mt-7 mb-5 hover:bg-orange-400 text-white h-12 shadow-none bg-primary rounded-none ${montserrat.className}`}
             variant="contained"
+            style={{background: '#ffc107'}}
           >
             Login
           </Button>
