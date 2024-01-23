@@ -54,7 +54,9 @@ const SendMoney = () => {
   const router = useRouter();
   const dispatch = useDispatch();
 
-  const { beneficiary, transactionDetails } = useSelector((state: any) => state.account);
+  const { beneficiary, transactionDetails } = useSelector(
+    (state: any) => state.account
+  );
 
   const [beneficiaryBank, setBeneficiaryBank] = useState("all");
   const [name, setName] = useState("");
@@ -248,7 +250,7 @@ const SendMoney = () => {
             <div className="flex w-9/12 items-center mt-10 space-x-2">
               <Button
                 size="large"
-                style={{ border: "1px solid" }}
+                style={{ border: "1px solid", background: "white" }}
                 onClick={goBack}
                 className={`text-xs w-5/12 hover:bg-white text-gray-500 h-12 shadow-none border border-gray-500 ${montserrat.className}`}
                 variant="contained"
@@ -259,6 +261,7 @@ const SendMoney = () => {
                 size="large"
                 disabled={checkEntries()}
                 onClick={goToReview}
+                style={{ background: "#ffc107" }}
                 className={`text-xs w-4/6 hover:bg-orange-400 text-white h-12 shadow-none bg-primary rounded-none ${montserrat.className}`}
                 variant="contained"
               >
@@ -372,13 +375,14 @@ const SendMoney = () => {
                 <CheckCircleIcon className="w-20 h-20 text-green-500" />
               </div>
               <p className="text-gray-600 text-lg">
-              ₦{transactionDetails.amount} is on its way to {beneficiary.name}
+                ₦{transactionDetails.amount} is on its way to {beneficiary.name}
               </p>
             </div>
 
             <div className="mt-6">
               <Button
                 size="large"
+                style={{ background: "#ffc107" }}
                 onClick={handleGoToAcount}
                 className={`w-full mt-8 hover:bg-orange-400 text-white h-12 shadow-none bg-primary rounded-none ${montserrat.className}`}
                 variant="contained"

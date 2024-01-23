@@ -55,7 +55,7 @@ const ReviewPayment: React.FC<ReviewPaymentProps> = ({
         <div className="flex w-9/12 items-center mt-10 space-x-2">
           <Button
             size="large"
-            style={{ border: "1px solid" }}
+            style={{ border: "1px solid", background: "white" }}
             onClick={goBack}
             className={`text-xs w-5/12 hover:bg-white text-gray-500 h-12 shadow-none border border-gray-500 ${montserrat.className}`}
             variant="contained"
@@ -64,6 +64,7 @@ const ReviewPayment: React.FC<ReviewPaymentProps> = ({
           </Button>
           <Button
             size="large"
+            style={{ background: "#ffc107" }}
             onClick={goToSuccess}
             className={`text-xs w-4/6 hover:bg-orange-400 text-white h-12 shadow-none bg-primary rounded-none ${montserrat.className}`}
             variant="contained"
