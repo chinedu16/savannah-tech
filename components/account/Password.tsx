@@ -55,7 +55,7 @@ const ReviewPayment: React.FC<ReviewPaymentProps> = ({
         <div className="flex w-9/12 items-center mt-10 space-x-2">
           <Button
             size="large"
-            style={{ border: "1px solid", background: "white" }}
+            style={{ border: "1px solid", background: "white", color: 'black' }}
             onClick={goBack}
             className={`text-xs w-5/12 hover:bg-white text-gray-500 h-12 shadow-none border border-gray-500 ${montserrat.className}`}
             variant="contained"

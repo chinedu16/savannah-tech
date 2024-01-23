@@ -250,7 +250,7 @@ const SendMoney = () => {
             <div className="flex w-9/12 items-center mt-10 space-x-2">
               <Button
                 size="large"
-                style={{ border: "1px solid", background: "white" }}
+                style={{ border: "1px solid", background: "white", color: 'black' }}
                 onClick={goBack}
                 className={`text-xs w-5/12 hover:bg-white text-gray-500 h-12 shadow-none border border-gray-500 ${montserrat.className}`}
                 variant="contained"
@@ -316,7 +316,7 @@ const SendMoney = () => {
               Enter your beneficiary account details in this form to proceed.
             </Typography>
 
-            <div className="mt-6">
+            <div className="mt-6 space-y-4">
               <Select
                 className="w-full"
                 labelId="demo-simple-select-label"
@@ -354,6 +354,7 @@ const SendMoney = () => {
               />
               <Button
                 size="large"
+                style={{ background: "#ffc107" }}
                 onClick={handleAddBeneficiary}
                 className={`w-full mt-8 hover:bg-orange-400 text-white h-12 shadow-none bg-primary rounded-none ${montserrat.className}`}
                 variant="contained"

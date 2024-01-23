@@ -40,7 +40,6 @@ const Sidebar: React.FC = () => {
     },
     { path: "/user", text: "User", icon: <GroupIcon /> }, // Added user link
     { path: "/settings", text: "Settings", icon: <SettingsIcon /> },
-    { path: "/settings", text: "Settings", icon: <SettingsIcon /> },
   ];
 
   const filteredLinks =
