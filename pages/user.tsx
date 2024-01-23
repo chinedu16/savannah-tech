@@ -186,7 +186,7 @@ const User = () => {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {users.map((row) => (
+                  {users.map((row: any) => (
                     <TableRow
                       key={row.name}
                       style={{ fontFamily: "'Montserrat', sans-serif" }}

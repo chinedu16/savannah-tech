@@ -1,7 +1,6 @@
 import React from "react";
 
 import { Line } from 'react-chartjs-2';
-import faker from 'faker'
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -39,8 +38,8 @@ export const data = {
   labels,
   datasets: [
     {
-      label: "Dataset 1",
-      data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
+      label: "Transactions",
+      data: labels.map(() => [1000, 4000, 10000, 8000, 2000, 5000, 20000]),
       borderColor: "rgb(255, 99, 132)",
       backgroundColor: "rgba(255, 99, 132, 0.5)",
     },
@@ -59,7 +58,7 @@ const PieChart: React.FC = () => {
           <h5 className="text-3xl font-bold ">₦120,543.43</h5>
           </div>
           <div className="space-y-2 mt-4">
-            <Line data={data} options={options} />
+            <Line data={data} />
           </div>
         </div>
       </div>

@@ -372,7 +372,7 @@ const SendMoney = () => {
                 <CheckCircleIcon className="w-20 h-20 text-green-500" />
               </div>
               <p className="text-gray-600 text-lg">
-              ₦ {transactionDetails.amount} is on its way to {beneficiary.name}
+              ₦{transactionDetails.amount} is on its way to {beneficiary.name}
               </p>
             </div>
 

@@ -11,7 +11,7 @@ interface User {
 }
 
 interface UserState {
-  users: User[];
+  users: any;
 }
 
 const initialState: UserState = {
@@ -22,11 +22,11 @@ const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    addUser: (state, action: PayloadAction<User>) => {
+    addUser: (state, action: PayloadAction<User[]>) => {
       state.users = action.payload;
     },
     deleteUser: (state, action: PayloadAction<number>) => {
-      state.users = state.users.filter((user) => user.id !== action.payload);
+      state.users = state.users.filter((user: any) => user.id !== action.payload);
     },
   },
 });
