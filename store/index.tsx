@@ -1,13 +1,15 @@
 // in src/app/store.tsx
 
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
-import counterReducer from "../features/counterSlice";
-import productReducer from "../features/productSlice";
+import authReducer from "../features/authSlice";
+import userReducer from "../features/userSlice";
+import accountReducer from "../features/accountSlice";
 
 const store = configureStore({
   reducer: {
-    counter: counterReducer,
-    products: productReducer,
+    auth: authReducer,
+    user: userReducer,
+    account: accountReducer
   },
 });
 

@@ -1,12 +1,11 @@
 // components/Layout.tsx
-import Head from 'next/head';
+import Head from "next/head";
 import React, { ReactNode, useEffect } from "react";
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import { useDispatch } from "react-redux";
 import Header from "./Header";
-import Footer from "./Footer";
-import { setCart, setWishlist } from "../features/productSlice";
+import Sidebar from "./Sidebar";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 
@@ -20,25 +19,12 @@ interface LayoutProps {
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
-  const dispatch = useDispatch();
-
-  // Load wishlist and cart from local storage on component mount
-  useEffect(() => {
-    const storedWishlist = localStorage.getItem("wishlist");
-    if (storedWishlist) {
-      dispatch(setWishlist(JSON.parse(storedWishlist)));
-    }
-
-    const storedCart = localStorage.getItem("cart");
-    if (storedCart) {
-      dispatch(setCart(JSON.parse(storedCart)));
-    }
-  }, [dispatch]);
+ 
 
   return (
     <div className={montserrat.className}>
       <Head>
-        <title>Next Basket - Ecommerce Website</title>
+        <title>Herconomy - Bank with us</title>
         <meta name="description" content="Checkout our cool page" key="desc" />
         <meta property="og:title" content="Social Title for Cool Page" />
         <meta
@@ -50,9 +36,16 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           content="https://example.com/images/cool-page.jpg"
         />
       </Head>
-      <Header />
-      <main className="">{children}</main>
-      <Footer />
+
+      <div className="flex h-screen bg-gray-50">
+        <Sidebar />
+        <div className="flex-1 flex flex-col overflow-hidden">
+          <Header />
+          <main className="flex-1 overflow-x-hidden overflow-y-auto bg-gray-50 p-4 md:p-6">
+            {children}
+          </main>
+        </div>
+      </div>
     </div>
   );
 };
