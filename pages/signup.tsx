@@ -1,15 +1,15 @@
-// LoginBox.tsx
+// SignupBox.tsx
 import Image from "next/image";
 
 import React, { useState } from "react";
 import { useForm, FormProvider } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import InputField from "../components/base/Input";
-import { login } from "../util/validationSchema";
+import { signup } from "../util/validationSchema";
 import LoginImage from "../public/image-login.png";
-import { logIn } from "../features/firebaseAuth";
-import { useRouter } from "next/router";
-import CircularProgress from "@mui/material/CircularProgress";
+import { useRouter } from 'next/router';
+import CircularProgress from '@mui/material/CircularProgress';
+
 
 interface FormValues {
   email: string;
@@ -18,34 +18,35 @@ interface FormValues {
 }
 import { Open_Sans } from "next/font/google";
 import Link from "next/link";
+import { signUp } from "../features/firebaseAuth";
 
 const openSans = Open_Sans({
   subsets: ["latin"],
   display: "swap",
 });
 
-const LoginBox: React.FC = () => {
+const SignupBox: React.FC = () => {
   const router = useRouter();
+  const methods = useForm<FormValues>({
+    resolver: yupResolver(signup),
+  });
+
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const methods = useForm<FormValues>({
-    resolver: yupResolver(login),
-  });
-
   const onSubmit = async (data: FormValues) => {
-    setLoading(true);
-    console.log(data)
-    setError("");
+    setLoading(true)
+    setError("")
     try {
-      const response = await logIn(data.email, data.password);
+      const response = await signUp(data.email, data.password, data.name);
       if (response) {
-        router.push("/dashboard");
+        console.log('hgijhg')
+        router.push('/');
       }
     } catch (error) {
       setError(error.message);
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
   };
 
@@ -56,15 +57,20 @@ const LoginBox: React.FC = () => {
           <div className="w-1/2 flex items-center justify-center">
             <div className="bg-white w-full md:w-7/12 space-y-6">
               <h2 className="text-3xl text-neutral-800 font-semibold ">
-                Welcome Back 👋
+                Let’s Create Your Account. 😀
               </h2>
               <p className="text-neutral-600">
-                Today is a new day. its your day. You help shape it. <br /> Sign
-                in to start managing your todo list
+                Sign up for free and get started quickly.
               </p>
 
               <div className="space-y-7 pt-5">
                 <form onSubmit={methods.handleSubmit(onSubmit)}>
+                  <InputField
+                    name="name"
+                    label="Name"
+                    type="text"
+                    placeholder="Enter your name"
+                  />
                   <InputField
                     name="email"
                     label="Email"
@@ -77,16 +83,27 @@ const LoginBox: React.FC = () => {
                     type="password"
                     placeholder="Enter your password"
                   />
+                  <InputField
+                    name="confirm_password"
+                    label="Confirm Password"
+                    type="password"
+                    placeholder="Please confirm password"
+                  />
+
                   <div className="flex justify-end mt-4 text-sm text-blue-600">
                     <Link href="/">Forgot Password?</Link>
                   </div>
 
                   <button
                     type="submit"
+                    className="bg-neutral-800 mt-6 w-full text-white px-4 py-3 rounded-md flex justify-center items-center"
                     disabled={loading}
-                    className="bg-neutral-800 mt-6 w-full text-white px-4 py-3 rounded-md"
                   >
-                    {loading ? <CircularProgress color="inherit" /> : "Sign in"}
+                    {loading ? (
+                      <CircularProgress color="inherit" />
+                    ) : (
+                      "Sign Up"
+                    )}
                   </button>
                   {error && <p className="text-red-500 mt-2">{error}</p>}
 
@@ -122,7 +139,7 @@ const LoginBox: React.FC = () => {
                       />
                     </svg>
 
-                    <span>Signin with Google</span>
+                    <span>Signup with Google</span>
                   </div>
                   <div className="p-2 border bg-gray-200 text-sm text-gray-600 font-semibold rounded-lg flex items-center justify-center space-x-3">
                     <svg
@@ -137,15 +154,15 @@ const LoginBox: React.FC = () => {
                       />
                     </svg>
 
-                    <span>Signin with Facebook</span>
+                    <span>Signup with Facebook</span>
                   </div>
                 </form>
               </div>
 
               <div className="flex justify-center text-sm">
-                <Link href="/signup">
-                  Don’t have an account?{" "}
-                  <span className="text-blue-600">Sign up</span>{" "}
+                <Link href="/">
+                  Already have an account?
+                  <span className="text-blue-600"> Sign in</span>{" "}
                 </Link>
               </div>
             </div>
@@ -164,4 +181,4 @@ const LoginBox: React.FC = () => {
   );
 };
 
-export default LoginBox;
+export default SignupBox;

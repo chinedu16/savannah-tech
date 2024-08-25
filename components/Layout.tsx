@@ -2,12 +2,11 @@
 import Head from "next/head";
 import React, { ReactNode, useEffect } from "react";
 import type { Metadata } from "next";
-import { Montserrat } from "next/font/google";
 import { useDispatch } from "react-redux";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
 
-const montserrat = Montserrat({ subsets: ["latin"] });
+import { Open_Sans } from "next/font/google";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,13 +17,15 @@ interface LayoutProps {
   children: ReactNode;
 }
 
+const openSans = Open_Sans({
+  subsets: ["latin"],
+  display: "swap",
+});
 const Layout: React.FC<LayoutProps> = ({ children }) => {
- 
-
   return (
-    <div className={montserrat.className}>
+    <div className={openSans.className}>
       <Head>
-        <title>Herconomy - Bank with us</title>
+        <title>Medida Project</title>
         <meta name="description" content="Checkout our cool page" key="desc" />
         <meta property="og:title" content="Social Title for Cool Page" />
         <meta

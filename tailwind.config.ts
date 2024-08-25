@@ -14,7 +14,7 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       colors: {
-        primary: '#ffc107',
+        primary: '#E53170',
         'disabled-primary': '#8EC2F2',
         title: "#252B42",
         success: "#2DC071",
@@ -23,6 +23,9 @@ const config: Config = {
         'main-text': '#252B42',
         muted: '#BDBDBD'
       },
+      width: {
+        500: '500px'
+      }
     },
   },
   plugins: [],

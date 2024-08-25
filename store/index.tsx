@@ -1,15 +1,11 @@
 // in src/app/store.tsx
 
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
-import authReducer from "../features/authSlice";
-import userReducer from "../features/userSlice";
-import accountReducer from "../features/accountSlice";
+import todoReducer from "../features/todoSlice";
 
 const store = configureStore({
   reducer: {
-    auth: authReducer,
-    user: userReducer,
-    account: accountReducer
+    todo: todoReducer,
   },
 });
 

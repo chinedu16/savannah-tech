@@ -6,8 +6,6 @@ import TextField from "@mui/material/TextField";
 import SearchIcon from "@mui/icons-material/Search";
 import InputAdornment from "@mui/material/InputAdornment";
 
-import Logo from "../public/harconomy-logo.png";
-
 const Header: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const handleMobileMenuToggle = () => {
@@ -16,13 +14,13 @@ const Header: React.FC = () => {
   return (
     <header className="">
       <div className="lg:hidden flex  p-4 justify-between items-center">
-        <Image
+        {/* <Image
           src={Logo}
           width={200}
           height={26}
           alt="Logo"
           className="h-7 w-28 object-contain"
-        />
+        /> */}
         <svg
           onClick={handleMobileMenuToggle}
           xmlns="http://www.w3.org/2000/svg"

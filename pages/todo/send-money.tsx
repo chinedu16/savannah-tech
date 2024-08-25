@@ -20,7 +20,6 @@ import Password from "../../components/account/Password";
 
 import MenuItem from "@mui/material/MenuItem";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import { Montserrat } from "next/font/google";
 
 import {
   addBeneficiary,
@@ -28,7 +27,6 @@ import {
   addTransactionDetails,
 } from "../../features/accountSlice";
 
-const montserrat = Montserrat({ subsets: ["latin"] });
 
 const style = {
   position: "absolute" as "absolute",
@@ -164,8 +162,6 @@ const SendMoney = () => {
 
             <div className="mt-6">
               <TextField
-                sx={{ fontFamily: montserrat }}
-                className={`w-full ${montserrat.className}`}
                 id="outlined-basic"
                 placeholder="How much do you want to send"
                 variant="outlined"
@@ -203,8 +199,6 @@ const SendMoney = () => {
                     </div>
                   </div>
                   <TextField
-                    sx={{ fontFamily: montserrat }}
-                    className={` w-full ${montserrat.className}`}
                     id="outlined-basic"
                     placeholder="Add a narration"
                     variant="outlined"
@@ -252,7 +246,7 @@ const SendMoney = () => {
                 size="large"
                 style={{ border: "1px solid", background: "white", color: 'black' }}
                 onClick={goBack}
-                className={`text-xs w-5/12 hover:bg-white text-gray-500 h-12 shadow-none border border-gray-500 ${montserrat.className}`}
+                className={`text-xs w-5/12 hover:bg-white text-gray-500 h-12 shadow-none border border-gray-500`}
                 variant="contained"
               >
                 Go Back
@@ -262,7 +256,7 @@ const SendMoney = () => {
                 disabled={checkEntries()}
                 onClick={goToReview}
                 style={{ background: "#ffc107" }}
-                className={`text-xs w-4/6 hover:bg-orange-400 text-white h-12 shadow-none bg-primary rounded-none ${montserrat.className}`}
+                className={`text-xs w-4/6 hover:bg-orange-400 text-white h-12 shadow-none bg-primary rounded-none`}
                 variant="contained"
               >
                 Review Payment
@@ -334,8 +328,7 @@ const SendMoney = () => {
               </Select>
 
               <TextField
-                sx={{ fontFamily: montserrat }}
-                className={`mt-4 w-full ${montserrat.className}`}
+                
                 id="outlined-basic"
                 placeholder="Account Number"
                 variant="outlined"
@@ -344,8 +337,7 @@ const SendMoney = () => {
               />
               <TextField
                 disabled={accountNumber ? false : true}
-                sx={{ fontFamily: montserrat }}
-                className={`mt-4 w-full ${montserrat.className}`}
+                
                 id="outlined-basic"
                 placeholder="Chinedu Ohagwu"
                 variant="outlined"
@@ -356,7 +348,7 @@ const SendMoney = () => {
                 size="large"
                 style={{ background: "#ffc107" }}
                 onClick={handleAddBeneficiary}
-                className={`w-full mt-8 hover:bg-orange-400 text-white h-12 shadow-none bg-primary rounded-none ${montserrat.className}`}
+                className={`w-full mt-8 hover:bg-orange-400 text-white h-12 shadow-none bg-primary rounded-none`}
                 variant="contained"
               >
                 Add Beneficiary
@@ -385,7 +377,7 @@ const SendMoney = () => {
                 size="large"
                 style={{ background: "#ffc107" }}
                 onClick={handleGoToAcount}
-                className={`w-full mt-8 hover:bg-orange-400 text-white h-12 shadow-none bg-primary rounded-none ${montserrat.className}`}
+                className={`w-full mt-8 hover:bg-orange-400 text-white h-12 shadow-none bg-primary rounded-none`}
                 variant="contained"
               >
                 Go to Account
