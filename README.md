@@ -2,6 +2,8 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
+Node version should be `>20.10.0`
+
 Clone the code by running this in your terminal `git clone https://github.com/chinedu16/savannah-tech.git`
 
 Run `npm install` to install node project dependencies
