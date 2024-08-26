@@ -52,7 +52,7 @@ const LoginBox: React.FC = () => {
   return (
     <FormProvider {...methods}>
       <div lang="en" className={openSans.className}>
-        <div className="lg:flex px-5 my-10 lg:my-0 items-center justify-between w-full">
+        <div className="lg:flex my-10 lg:my-0 items-center justify-between w-full">
           <div className="lg:w-1/2 flex items-center justify-center">
             <div className="bg-white w-full md:w-7/12 space-y-6">
               <h2 className="text-3xl text-neutral-800 font-semibold ">
@@ -155,7 +155,7 @@ const LoginBox: React.FC = () => {
             <Image
               src={LoginImage}
               alt="Logo"
-              className="h-full w-full object-contain"
+              className="h-full w-full object-cover"
             />
           </div>
         </div>

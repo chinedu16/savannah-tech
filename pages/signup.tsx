@@ -53,17 +53,17 @@ const SignupBox: React.FC = () => {
   return (
     <FormProvider {...methods}>
       <div lang="en" className={openSans.className}>
-        <div className="lg:flex px-5 my-10 lg:my-0 items-center justify-between w-full">
+        <div className="lg:flex my-10 lg:my-0 items-center justify-between w-full">
           <div className="lg:w-1/2 flex items-center justify-center">
-            <div className="bg-white w-full md:w-7/12 space-y-6">
-              <h2 className="text-3xl text-neutral-800 font-semibold ">
+            <div className="bg-white w-full md:w-7/12 space-y-4">
+              <h2 className="text-3xl text-neutral-800 font-semibold">
                 Let’s Create Your Account. 😀
               </h2>
               <p className="text-neutral-600">
                 Sign up for free and get started quickly.
               </p>
 
-              <div className="space-y-7 pt-5">
+              <div className="space-y-4 pt-3">
                 <form onSubmit={methods.handleSubmit(onSubmit)}>
                   <InputField
                     name="name"
@@ -96,7 +96,7 @@ const SignupBox: React.FC = () => {
 
                   <button
                     type="submit"
-                    className="bg-neutral-800 mt-6 w-full text-white px-4 py-3 rounded-md flex justify-center items-center"
+                    className="bg-neutral-800 mt-4 w-full text-white px-4 py-3 rounded-md flex justify-center items-center"
                     disabled={loading}
                   >
                     {loading ? (
@@ -107,7 +107,7 @@ const SignupBox: React.FC = () => {
                   </button>
                   {error && <p className="text-red-500 mt-2">{error}</p>}
 
-                  <div className="flex items-center my-10">
+                  <div className="flex items-center my-5">
                     <div className="flex-grow border-t border-gray-300"></div>
                     <span className="mx-4 text-gray-500">OR</span>
                     <div className="flex-grow border-t border-gray-300"></div>
@@ -172,7 +172,7 @@ const SignupBox: React.FC = () => {
             <Image
               src={LoginImage}
               alt="Logo"
-              className="h-full w-full object-contain"
+              className="h-full w-full object-cover"
             />
           </div>
         </div>
