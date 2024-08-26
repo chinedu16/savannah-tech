@@ -11,3 +11,12 @@ Run `npm install` to install node project dependencies
 Run `npm run dev` to startup the project on your local device
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+
+## Expectation
+
+- Signin using email and password
+
+- Signup using email, password, name
+
+- Ability to CRUD todos
