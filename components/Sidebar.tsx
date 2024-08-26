@@ -1,13 +1,11 @@
-// components/Sidebar.tsx
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
-
 import { useRouter } from "next/router";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import LogoutIcon from "@mui/icons-material/Logout";
-import GroupIcon from "@mui/icons-material/Group";
+import { signOut } from "firebase/auth";
+import { auth } from "../util/firebaseConfig";
 
 const Sidebar: React.FC = () => {
   const router = useRouter();
@@ -16,9 +14,15 @@ const Sidebar: React.FC = () => {
     return router.pathname.includes(pathname);
   };
 
-  const logoutApp = () => {
-    router.push("/");
+  const logoutApp = async () => {
+    try {
+      await signOut(auth);
+      router.push("/");
+    } catch (error) {
+      console.error("Error logging out:", error);
+    }
   };
+
   const linkItems = [
     { path: "/dashboard", text: "Dashboard", icon: <DashboardIcon /> },
     {
@@ -29,7 +33,7 @@ const Sidebar: React.FC = () => {
   ];
 
   return (
-    <aside className="relative w-64  bg-gray-100 text-white hidden lg:block">
+    <aside className="relative w-64 bg-gray-100 text-white hidden lg:block">
       {/* Logo */}
       <div className="flex p-4">
         {/* <Link href={"/user"}>
@@ -61,7 +65,7 @@ const Sidebar: React.FC = () => {
 
       <div
         onClick={logoutApp}
-        className={`flex mt-10 absolute bottom-4 items-center text-gray-500 py-3 px-6 rounded-md mb-2 cursor-pointer`}
+        className="flex mt-10 absolute bottom-4 items-center text-gray-500 py-3 px-6 rounded-md mb-2 cursor-pointer"
       >
         <LogoutIcon className="mr-1" />
         Logout

@@ -40,8 +40,7 @@ const SignupBox: React.FC = () => {
     try {
       const response = await signUp(data.email, data.password, data.name);
       if (response) {
-        console.log('hgijhg')
-        router.push('/');
+        router.push('/dashboard');
       }
     } catch (error) {
       setError(error.message);

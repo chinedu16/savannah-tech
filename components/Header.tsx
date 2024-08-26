@@ -1,16 +1,31 @@
-// components/Header.tsx
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../util/firebaseConfig"; // Adjust the import to your Firebase configuration
 
 const Header: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [userName, setUserName] = useState<string | null>(null);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUserName(user.displayName || "User");
+      } else {
+        setUserName(null);
+      }
+    });
+
+    return () => unsubscribe(); // Cleanup subscription on unmount
+  }, []);
+
   const handleMobileMenuToggle = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
+
   return (
-    <header className="">
-      <div className="lg:hidden flex  p-4 justify-between items-center">
-        
+    <header>
+      <div className="lg:hidden flex p-4 justify-between items-center">
         <svg
           onClick={handleMobileMenuToggle}
           xmlns="http://www.w3.org/2000/svg"
@@ -33,15 +48,13 @@ const Header: React.FC = () => {
           <li>
             <Link href="/todo">Todo</Link>
           </li>
-          
-         
         </ul>
       </nav>
       <div className="bg-gray-50 border-b hidden lg:flex items-center">
         <div className="w-full px-6 mb-4 mt-2">
           <div className="flex justify-between items-center">
-            <div className="w-1/2">
-              
+            <div className="w-1/2 font-bold">
+              {userName && <span>Welcome, {userName}!</span>}
             </div>
             <div className="flex items-center space-x-4">
               <div className="bg-white rounded-full p-4">
@@ -52,7 +65,7 @@ const Header: React.FC = () => {
                   viewBox="0 0 24 24"
                   fill="none"
                 >
-                  <g clip-path="url(#clip0_501_2024)">
+                  <g clipPath="url(#clip0_501_2024)">
                     <path
                       d="M19.29 17.29L18 16V11C18 7.93 16.36 5.36 13.5 4.68V4C13.5 3.17 12.83 2.5 12 2.5C11.17 2.5 10.5 3.17 10.5 4V4.68C7.62999 5.36 5.99999 7.92 5.99999 11V16L4.70999 17.29C4.07999 17.92 4.51999 19 5.40999 19H18.58C19.48 19 19.92 17.92 19.29 17.29ZM16 17H7.99999V11C7.99999 8.52 9.50999 6.5 12 6.5C14.49 6.5 16 8.52 16 11V17ZM12 22C13.1 22 14 21.1 14 20H9.99999C9.99999 21.1 10.89 22 12 22Z"
                       fill="#84919A"
@@ -72,7 +85,7 @@ const Header: React.FC = () => {
                 viewBox="0 0 48 48"
                 fill="none"
               >
-                <rect width="48" height="48" fill="black" fill-opacity="0.2" />
+                <rect width="48" height="48" fill="black" fillOpacity="0.2" />
               </svg>
             </div>
           </div>

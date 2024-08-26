@@ -1,27 +1,45 @@
 import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { deleteTodo, replaceTodos } from "../../features/todoSlice";
+import {
+  collection,
+  getDocs,
+  doc,
+  deleteDoc,
+  onSnapshot,
+} from "firebase/firestore";
+import { db } from "../../util/firebaseConfig"; // Import your Firebase config
 import Image from "next/image";
-import TodoModal from "./TodoModal"; // Import TodoModal
+import TodoModal from "./TodoModal";
 
 import EditIcon from "../../public/edit.svg";
 import DeleteIcon from "../../public/delete.svg";
 
+
 const TodoList = () => {
-  const todos = useSelector((state: any) => state.todo.todos);
-  const dispatch = useDispatch();
+  const [todos, setTodos] = useState<any[]>([]);
   const [editingTodo, setEditingTodo] = useState<any>(null);
 
   useEffect(() => {
-    const storedTodos = localStorage.getItem("todos");
-    if (storedTodos) {
-      const parsedTodos = JSON.parse(storedTodos);
-      dispatch(replaceTodos(parsedTodos));
+    const unsubscribe = onSnapshot(collection(db, "todos"), (snapshot) => {
+      const fetchedTodos: any[] = [];
+      snapshot.forEach((doc) => {
+        fetchedTodos.push({ id: doc.id, ...doc.data() });
+      });
+      setTodos(fetchedTodos);
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  const handleDelete = async (id: string) => {
+    try {
+      await deleteDoc(doc(db, "todos", id));
+    } catch (error) {
+      console.error("Error deleting todo:", error);
     }
-  }, [dispatch]);
+  };
 
   const groupedTodos = todos.reduce((group: any, todo: any) => {
-    const date = new Date(todo.date).toDateString();
+    const date = new Date(todo.createdAt?.seconds * 1000).toDateString();
     group[date] = group[date] ?? [];
     group[date].push(todo);
     return group;
@@ -42,7 +60,7 @@ const TodoList = () => {
                   className="p-4 border border-gray-300 rounded-md flex justify-between items-center"
                 >
                   <div>
-                    <h3 className="text-xl font-bold">{todo.name}</h3>
+                    <h3 className="text-xl font-bold">{todo.title}</h3>
                     <p className="mt-2">
                       <span
                         className={`inline-block px-2 text-sm py-1 rounded-md ${
@@ -74,7 +92,7 @@ const TodoList = () => {
                       alt="delete"
                       width={21}
                       height={21}
-                      onClick={() => dispatch(deleteTodo(todo.id))}
+                      onClick={() => handleDelete(todo.id)}
                       className="h-5 w-5 cursor-pointer object-contain"
                     />
                   </div>

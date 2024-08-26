@@ -35,7 +35,6 @@ const LoginBox: React.FC = () => {
 
   const onSubmit = async (data: FormValues) => {
     setLoading(true);
-    console.log(data)
     setError("");
     try {
       const response = await logIn(data.email, data.password);

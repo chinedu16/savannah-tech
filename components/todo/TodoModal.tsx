@@ -1,9 +1,15 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { addTodo, editTodo } from "../../features/todoSlice";
-import { v4 as uuidv4 } from "uuid";
+import React, { useState } from "react";
+import {
+  collection,
+  addDoc,
+  updateDoc,
+  doc,
+  serverTimestamp,
+} from "firebase/firestore";
+import { db } from "../../util/firebaseConfig";
 import Image from "next/image";
 import CloseIcon from "../../public/close.svg";
+import CircularProgress from "@mui/material/CircularProgress";
 
 interface TodoModalProps {
   onClose: () => void;
@@ -11,30 +17,36 @@ interface TodoModalProps {
 }
 
 const TodoModal: React.FC<TodoModalProps> = ({ onClose, todo }) => {
-  const [name, setName] = useState(todo ? todo.name : "");
-  const [priority, setPriority] = useState<"high" | "medium" | "low">(
+  const [title, setTitle] = useState(todo ? todo.title : "");
+  const [loading, setLoading] = useState(false);
+  const [priority, setPriority] = useState<"high" | "medium">(
     todo ? todo.priority : "medium"
   );
-  const dispatch = useDispatch();
-  const todos = useSelector((state: any) => state.todo.todos);
 
-  const handleSubmit = () => {
+  const buttonText = todo ? (loading ? "Updating..." : "Update Todo") : (loading ? "Adding..." : "Add Todo");
+
+  const handleSubmit = async () => {
+    setLoading(true)
     const newTodo = {
-      id: todo ? todo.id : uuidv4(),
-      name,
+      title,
       priority,
-      date: todo ? todo.date : new Date().toISOString(),
+      createdAt: todo ? todo.createdAt : serverTimestamp(),
+      updatedAt: serverTimestamp(),
     };
 
-    if (todo) {
-      dispatch(editTodo(newTodo));
-    } else {
-      dispatch(addTodo(newTodo));
-      const updatedTodos = [...todos, newTodo];
-      localStorage.setItem("todos", JSON.stringify(updatedTodos));
+    try {
+      if (todo) {
+        const todoRef = doc(db, "todos", todo.id);
+        await updateDoc(todoRef, newTodo);
+      } else {
+        await addDoc(collection(db, "todos"), newTodo);
+      }
+      onClose();
+    } catch (error) {
+      console.error("Error adding or updating todo:", error);
+    } finally {
+      setLoading(false)
     }
-
-    onClose();
   };
 
   return (
@@ -42,7 +54,7 @@ const TodoModal: React.FC<TodoModalProps> = ({ onClose, todo }) => {
       <div className="relative bg-white p-6 rounded-md lg:w-500 w-5/6">
         <div className="flex justify-between items-center mb-7">
           <h2 className="text-xl font-bold ">
-            {todo ? "Edit Todo" : "Add Todo"} {/* Change heading based on mode */}
+            {todo ? "Edit Todo" : "Add Todo"}
           </h2>
           <button
             onClick={onClose}
@@ -55,9 +67,9 @@ const TodoModal: React.FC<TodoModalProps> = ({ onClose, todo }) => {
         <input
           type="text"
           className="w-full px-2 py-3 border border-gray-300 rounded-md mb-5 input"
-          placeholder="Todo Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          placeholder="Todo Title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
         />
 
         <div className="mb-5">
@@ -82,13 +94,15 @@ const TodoModal: React.FC<TodoModalProps> = ({ onClose, todo }) => {
             />{" "}
             Medium
           </label>
-          
         </div>
+
         <button
+          type="submit"
           onClick={handleSubmit}
-          className="bg-neutral-800 text-white px-4 py-3 mt-5 rounded-md w-full"
+          disabled={loading}
+          className="bg-neutral-800 mt-6 w-full text-white px-4 py-3 rounded-md"
         >
-          {todo ? "Update Todo" : "Add Todo"} {/* Change button text based on mode */}
+          {loading ? <CircularProgress style={{ width: '20px', height: '20px', color: 'white' }} /> : buttonText }
         </button>
       </div>
     </div>
