@@ -1,10 +1,6 @@
 // components/Header.tsx
-import Image from "next/image";
 import { useState } from "react";
 import Link from "next/link";
-import TextField from "@mui/material/TextField";
-import SearchIcon from "@mui/icons-material/Search";
-import InputAdornment from "@mui/material/InputAdornment";
 
 const Header: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -14,13 +10,7 @@ const Header: React.FC = () => {
   return (
     <header className="">
       <div className="lg:hidden flex  p-4 justify-between items-center">
-        {/* <Image
-          src={Logo}
-          width={200}
-          height={26}
-          alt="Logo"
-          className="h-7 w-28 object-contain"
-        /> */}
+        
         <svg
           onClick={handleMobileMenuToggle}
           xmlns="http://www.w3.org/2000/svg"
@@ -41,37 +31,17 @@ const Header: React.FC = () => {
             <Link href="/dashboard">Dashboard</Link>
           </li>
           <li>
-            <Link href="/accounts">Accounts</Link>
+            <Link href="/todo">Todo</Link>
           </li>
-          <li>
-            <Link href="/transactions">Transactions</Link>
-          </li>
-          <li>
-            <Link href="/settings">Settings</Link>
-          </li>
-          <li>
-            <Link href="/">Logout</Link>
-          </li>
+          
          
         </ul>
       </nav>
-      <div className="bg-gray-50 hidden lg:flex items-center">
-        <div className="w-full px-6 mt-5">
+      <div className="bg-gray-50 border-b hidden lg:flex items-center">
+        <div className="w-full px-6 mb-4 mt-2">
           <div className="flex justify-between items-center">
             <div className="w-1/2">
-              <TextField
-                id="input-with-icon-textfield"
-                label=""
-                className="w-full bg-white"
-                placeholder="Search"
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <SearchIcon />
-                    </InputAdornment>
-                  ),
-                }}
-              />
+              
             </div>
             <div className="flex items-center space-x-4">
               <div className="bg-white rounded-full p-4">

@@ -1,26 +1,24 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { deleteTodo, addTodo } from "../../features/todoSlice";
+import { deleteTodo, replaceTodos } from "../../features/todoSlice";
+import Image from "next/image";
+import TodoModal from "./TodoModal"; // Import TodoModal
+
+import EditIcon from "../../public/edit.svg";
+import DeleteIcon from "../../public/delete.svg";
 
 const TodoList = () => {
   const todos = useSelector((state: any) => state.todo.todos);
   const dispatch = useDispatch();
+  const [editingTodo, setEditingTodo] = useState<any>(null);
 
-  // Load todos from local storage on component mount
   useEffect(() => {
     const storedTodos = localStorage.getItem("todos");
     if (storedTodos) {
       const parsedTodos = JSON.parse(storedTodos);
-      parsedTodos.forEach((todo: any) => {
-        dispatch(addTodo(todo));
-      });
+      dispatch(replaceTodos(parsedTodos));
     }
   }, [dispatch]);
-
-  // Save todos to local storage whenever todos state changes
-  useEffect(() => {
-    localStorage.setItem("todos", JSON.stringify(todos));
-  }, [todos]);
 
   const groupedTodos = todos.reduce((group: any, todo: any) => {
     const date = new Date(todo.date).toDateString();
@@ -47,38 +45,51 @@ const TodoList = () => {
                     <h3 className="text-xl font-bold">{todo.name}</h3>
                     <p className="mt-2">
                       <span
-                        className={`inline-block px-2 py-1 rounded-md text-white ${
+                        className={`inline-block px-2 text-sm py-1 rounded-md ${
                           todo.priority === "high"
-                            ? "bg-red-600"
+                            ? "bg-high-bg text-high-text"
                             : todo.priority === "medium"
-                            ? "bg-yellow-500"
-                            : "bg-green-500"
+                            ? "bg-medium-bg text-medium-text"
+                            : "bg-gray-400 text-black"
                         }`}
                       >
-                        {todo.priority.charAt(0).toUpperCase() +
-                          todo.priority.slice(1)}
+                        {todo.priority
+                          ? todo.priority.charAt(0).toUpperCase() +
+                            todo.priority.slice(1)
+                          : "No Priority"}
                       </span>
                     </p>
                   </div>
                   <div className="flex space-x-2">
-                    <button
-                      className="text-yellow-500"
-                      onClick={() => console.log("Edit todo")}
-                    >
-                      Edit
-                    </button>
-                    <button
-                      className="text-red-500"
+                    <Image
+                      src={EditIcon}
+                      alt="edit"
+                      width={21}
+                      height={21}
+                      onClick={() => setEditingTodo(todo)} // Set the todo to be edited
+                      className="h-5 w-5 cursor-pointer object-contain"
+                    />
+                    <Image
+                      src={DeleteIcon}
+                      alt="delete"
+                      width={21}
+                      height={21}
                       onClick={() => dispatch(deleteTodo(todo.id))}
-                    >
-                      Delete
-                    </button>
+                      className="h-5 w-5 cursor-pointer object-contain"
+                    />
                   </div>
                 </div>
               ))}
             </div>
           </div>
         ))
+      )}
+
+      {editingTodo && (
+        <TodoModal
+          onClose={() => setEditingTodo(null)}
+          todo={editingTodo} // Pass the todo to be edited
+        />
       )}
     </div>
   );

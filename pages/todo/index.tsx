@@ -21,7 +21,7 @@ const Todo = () => {
             <button
               type="submit"
               onClick={openModal}
-              className="bg-neutral-800 mt-6 w-full text-white px-4 py-3 rounded-md"
+              className="bg-neutral-800 w-full text-white px-4 py-3 rounded-md"
             >
               Add Todo
             </button>

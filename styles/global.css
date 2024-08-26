@@ -7,3 +7,14 @@
 html, body {
   font-family: "Open Sans", sans-serif;
 }
+
+.input {
+  border: 1px solid #d1d5db;
+  padding: 0.75rem 0.5rem;
+  border-radius: 0.375rem;
+}
+
+.input:focus-visible {
+  border-color: #E53170;
+  outline: none;
+}

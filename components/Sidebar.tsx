@@ -49,7 +49,7 @@ const Sidebar: React.FC = () => {
           <Link key={index} href={path} passHref>
             <div
               className={`flex items-center text-gray-500 py-3 px-4 rounded-md mb-2 cursor-pointer ${
-                isActive(path) && "bg-white font-semibold text-yellow-500"
+                isActive(path) && "bg-white font-semibold text-primary"
               }`}
             >
               {icon && <span className="mr-2">{icon}</span>}

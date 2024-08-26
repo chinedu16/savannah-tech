@@ -53,8 +53,8 @@ const SignupBox: React.FC = () => {
   return (
     <FormProvider {...methods}>
       <div lang="en" className={openSans.className}>
-        <div className="flex items-center justify-between w-full">
-          <div className="w-1/2 flex items-center justify-center">
+        <div className="lg:flex px-5 my-10 lg:my-0 items-center justify-between w-full">
+          <div className="lg:w-1/2 flex items-center justify-center">
             <div className="bg-white w-full md:w-7/12 space-y-6">
               <h2 className="text-3xl text-neutral-800 font-semibold ">
                 Let’s Create Your Account. 😀
@@ -100,7 +100,7 @@ const SignupBox: React.FC = () => {
                     disabled={loading}
                   >
                     {loading ? (
-                      <CircularProgress color="inherit" />
+                      <CircularProgress style={{ width: '20px', height: '20px', color: 'white' }} />
                     ) : (
                       "Sign Up"
                     )}
@@ -135,7 +135,7 @@ const SignupBox: React.FC = () => {
                       />
                       <path
                         d="M11.9997 5.27818C13.767 5.27818 15.3379 5.88907 16.5925 7.06727L20.0288 3.63095C17.9452 1.68917 15.2398 0.5 11.9997 0.5C7.30887 0.5 3.26165 3.19454 1.28711 7.12183L5.27978 10.22C6.22882 7.38362 8.87976 5.27818 11.9997 5.27818Z"
-                        fill="#EA4335"
+                        fill="#EA43CircularProgress35"
                       />
                     </svg>
 
@@ -168,7 +168,7 @@ const SignupBox: React.FC = () => {
             </div>
           </div>
 
-          <div className="w-1/2 h-screen flex justify-end items-end">
+          <div className="lg:w-1/2 hidden h-screen lg:flex justify-end items-end">
             <Image
               src={LoginImage}
               alt="Logo"

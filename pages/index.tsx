@@ -52,8 +52,8 @@ const LoginBox: React.FC = () => {
   return (
     <FormProvider {...methods}>
       <div lang="en" className={openSans.className}>
-        <div className="flex items-center justify-between w-full">
-          <div className="w-1/2 flex items-center justify-center">
+        <div className="lg:flex px-5 my-10 lg:my-0 items-center justify-between w-full">
+          <div className="lg:w-1/2 flex items-center justify-center">
             <div className="bg-white w-full md:w-7/12 space-y-6">
               <h2 className="text-3xl text-neutral-800 font-semibold ">
                 Welcome Back 👋
@@ -86,7 +86,7 @@ const LoginBox: React.FC = () => {
                     disabled={loading}
                     className="bg-neutral-800 mt-6 w-full text-white px-4 py-3 rounded-md"
                   >
-                    {loading ? <CircularProgress color="inherit" /> : "Sign in"}
+                    {loading ? <CircularProgress style={{ width: '20px', height: '20px', color: 'white' }} /> : "Sign in"}
                   </button>
                   {error && <p className="text-red-500 mt-2">{error}</p>}
 
@@ -151,7 +151,7 @@ const LoginBox: React.FC = () => {
             </div>
           </div>
 
-          <div className="w-1/2 h-screen flex justify-end items-end">
+          <div className="lg:w-1/2 hidden h-screen lg:flex justify-end items-end">
             <Image
               src={LoginImage}
               alt="Logo"
